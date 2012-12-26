@@ -65,6 +65,16 @@
     <string name="tint_background_title">Tint Background</string>
     <string name="tint_background_summary">Make Luminance and Chroma selection affect background colors as well</string>
 
+    <!-- [CHAR LIMIT=NONE] Device Info screen. Countdown for user taps to enable development settings -->
+    <string name="show_dev_countdown_cm">{count, plural,
+      =1      {You are now # step away from enabling development settings.}
+      other   {You are now # steps away from enabling development settings.}
+    }</string>
+    <!-- [CHAR LIMIT=NONE] Device Info screen. Confirmation that developer settings are enabled -->
+    <string name="show_dev_on_cm">You have enabled development settings!</string>
+    <!-- [CHAR LIMIT=NONE] Device Info screen. Okay we get it, stop pressing, you already have it on -->
+    <string name="show_dev_already_cm">No need, you have already enabled development settings.</string>
+
     <!-- Hotspot extras -->
     <string name="tethering_allow_vpn_upstreams_title">Allow clients to use VPNs</string>
     <string name="tethering_allow_vpn_upstreams_summary">Permit hotspot clients to use this device\u2019s VPN connections for upstream connectivity</string>
