@@ -520,4 +520,6 @@ public class Settings extends SettingsActivity {
      * Ten-X Additions.
     */
     public static class TenXSettingsActivity extends SettingsActivity {}
+
+    public static class DevRunningServicesActivity extends SettingsActivity { /* empty */ }
 }
