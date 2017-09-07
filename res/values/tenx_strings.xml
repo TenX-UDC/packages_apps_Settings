@@ -24,6 +24,10 @@
     
     <!-- TenX Device -->
     <string name="about_device_name">Device</string>
+
+    <!-- Ten-X -->
+    <string name="tenx_settings_title">Ten-X</string>
+    <string name="tenx_settings_summary">Customization Hub</string>
     
     <!-- TenX-OS maintainer -->
     <string name="maintainer">Maintainer</string>

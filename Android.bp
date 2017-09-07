@@ -55,15 +55,19 @@ android_library {
     srcs: [
         "src/**/*.java",
         "src/**/*.kt",
+        "TenX/src/**/*.java",
+        "TenX/src/**/*.kt",
     ],
     exclude_srcs: [
         "src/com/android/settings/biometrics/fingerprint2/lib/**/*.kt",
     ],
     use_resource_processor: true,
+    aaptflags: ["--extra-packages com.tenx.settings"],
     resource_dirs: [
         "res",
         "res-export", // for external usage
         "res-product",
+        "TenX/res"
     ],
     static_libs: [
         // External dependencies
@@ -138,6 +142,10 @@ android_library {
     flags_packages: [
         "android.app.flags-aconfig",
     ],
+
+    optimize: {
+        proguard_flags_files: ["proguard-core.flags"],
+    },
 }
 
 platform_compat_config {

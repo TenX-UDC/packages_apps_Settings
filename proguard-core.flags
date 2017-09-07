@@ -1,0 +1,2 @@
+# TenX
+-keep class com.tenx.settings.**
