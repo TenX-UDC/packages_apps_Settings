@@ -489,4 +489,9 @@ public class Settings extends SettingsActivity {
 
     /** Activity for the Reset mobile network settings. */
     public static class ResetMobileNetworkSettingsActivity extends SettingsActivity { /* empty */ }
+
+    /**
+     * Ten-X Additions.
+    */
+    public static class TenXSettingsActivity extends SettingsActivity {}
 }
