@@ -42,6 +42,8 @@ public class TenXVersionDetailPreferenceController extends BasePreferenceControl
     private static final int ACTIVITY_TRIGGER_COUNT = 3;
 
     private static final String KEY_TENX_VERSION_PROP = "org.tenx_version";
+    private static final String KEY_TENX_RELEASETYPE_PROP = "org.tenx.build_type";
+    private static final String KEY_TENX_FANBASE_PROP = "org.tenx.fanbase_name";
 
     private final UserManager mUserManager;
     private final long[] mHits = new long[ACTIVITY_TRIGGER_COUNT];
@@ -63,8 +65,10 @@ public class TenXVersionDetailPreferenceController extends BasePreferenceControl
     @Override
     public CharSequence getSummary() {
 	String[] tenxVer = SystemProperties.get(KEY_TENX_VERSION_PROP).split("v");
-	if (!tenxVer[1].isEmpty())
-	    return tenxVer[1];
+	String tenxReleasetype =  SystemProperties.get(KEY_TENX_RELEASETYPE_PROP);
+	String tenxFanbasetype =  SystemProperties.get(KEY_TENX_FANBASE_PROP);
+	if (!tenxVer[1].isEmpty() && !tenxReleasetype.isEmpty() && !tenxFanbasetype.isEmpty())
+	    return tenxVer[1] + " | " + tenxFanbasetype + " | " + tenxReleasetype;
 	else
             return mContext.getString(R.string.unknown);
     }
