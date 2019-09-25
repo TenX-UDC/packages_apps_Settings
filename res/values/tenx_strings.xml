@@ -26,5 +26,11 @@
     <string name="maintainer">Maintainer</string>
     <string name="maintainer_name">Your local GitHub Retard</string>
     <string name="maintainer_telegram_username">https://t.me/advaithbhat</string>
-    
+
+    <!-- SELinux Status -->
+    <string name="selinux_status">SELinux status</string>
+    <string name="selinux_status_disabled">Disabled</string>
+    <string name="selinux_status_permissive">Permissive</string>
+    <string name="selinux_status_enforcing">Enforcing</string>
+
 </resources>
