@@ -21,6 +21,14 @@
     android:key="top_level_settings">
 
     <com.android.settings.widget.HomepagePreference
+        android:key="top_level_tenx_settings"
+        android:title="@string/tenx_settings_title"
+        android:summary="@string/tenx_settings_summary"
+        android:icon="@drawable/ic_settings_tenx"
+        android:order="-160"
+        android:fragment="com.tenx.settings.TenXSettings"/>
+
+    <com.android.settings.widget.HomepagePreference
         android:fragment="com.android.settings.network.NetworkDashboardFragment"
         android:icon="@drawable/ic_settings_wireless"
         android:key="top_level_network"
