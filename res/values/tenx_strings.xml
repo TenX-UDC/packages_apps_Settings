@@ -22,4 +22,8 @@
     <!-- TenX Device -->
     <string name="about_device_name">Device</string>
     
+    <!-- TenX-OS maintainer -->
+    <string name="maintainer">Maintainer</string>
+    <string name="maintainer_name">Your local GitHub Retard</string>
+    
 </resources>
