@@ -21,19 +21,11 @@
     android:title="@string/firmware_version"
     settings:keywords="@string/keywords_android_version">
 
-    <!-- TenX logo -->
+    <!-- TenX info -->
     <com.android.settingslib.widget.LayoutPreference
-        android:key="tenx_logo"
-        android:layout="@layout/tenx_logo"
-        android:selectable="false"/>
-
-    <!-- Device name -->
-    <Preference
-        android:key="about_device_name"
-        android:title="@string/about_device_name"
-        android:summary="@string/summary_placeholder"
-        settings:enableCopying="true"
-        settings:controller="com.android.settings.deviceinfo.firmwareversion.AboutDeviceNamePreferenceController"/>
+        android:key="tenx_info"
+        android:layout="@layout/tenx_info"
+        android:selectable="false" />
 
     <!-- Android version -->
     <Preference
@@ -43,14 +35,6 @@
         settings:enableCopying="true"
         settings:searchable="false"
         settings:controller="com.android.settings.deviceinfo.firmwareversion.FirmwareVersionDetailPreferenceController"/>
-
-    <!-- Ten-X version -->
-    <Preference
-        android:key="tenx_version"
-        android:title="@string/tenx_version"
-        android:summary="@string/summary_placeholder"
-        settings:enableCopying="true"
-        settings:controller="com.android.settings.deviceinfo.firmwareversion.TenXVersionDetailPreferenceController"/>
 
     <!-- Security patch -->
     <Preference
