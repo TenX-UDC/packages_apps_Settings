@@ -16,7 +16,10 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <!-- TenX version preference -->
-    <string name="tenx_version">Ten-X version</string>
+    <string name="tenx_version_title">Version</string>
+    <string name="tenx_device_title">Device</string>
+    <string name="tenx_build_release_type_title">Release type</string>
+    <string name="device_codename_title">Codename</string>
     <string name="build_date">Build date</string>
     
     <!-- TenX Device -->
