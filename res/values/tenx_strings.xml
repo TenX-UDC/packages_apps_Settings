@@ -25,5 +25,6 @@
     <!-- TenX-OS maintainer -->
     <string name="maintainer">Maintainer</string>
     <string name="maintainer_name">Your local GitHub Retard</string>
+    <string name="maintainer_telegram_username">https://t.me/advaithbhat</string>
     
 </resources>
