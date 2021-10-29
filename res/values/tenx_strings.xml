@@ -31,4 +31,7 @@
     <string name="maintainer_name">Your local GitHub Retard</string>
     <string name="maintainer_telegram_username">https://t.me/TenX_OS</string>
     
+    <!-- Platform version -->
+    <string name="platform_version">Platform version</string>
+    
 </resources>
