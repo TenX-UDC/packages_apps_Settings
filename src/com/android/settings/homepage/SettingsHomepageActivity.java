@@ -107,6 +107,8 @@ public class SettingsHomepageActivity extends FragmentActivity implements
     private static final long HOMEPAGE_LOADING_TIMEOUT_MS = 300;
 
     private TopLevelSettings mMainFragment;
+    private View mHeaderView;
+    private View mDividerView;
     private View mHomepageView;
     private View mSuggestionView;
     private View mTwoPaneSuggestionView;
@@ -269,6 +271,13 @@ public class SettingsHomepageActivity extends FragmentActivity implements
         updateSplitLayout();
 
         enableTaskLocaleOverride();
+
+        mHeaderView = findViewById(R.id.tenx_settings_dashboard_container);
+        mDividerView = findViewById(R.id.divider_view);
+        boolean showTenXHeader = android.provider.Settings.System.getIntForUser(getApplicationContext().getContentResolver(),
+                android.provider.Settings.System.SETTINGS_TENX_DASHBOARD_ENABLED, 0, UserHandle.USER_CURRENT) != 0;
+        mHeaderView.setVisibility(showTenXHeader ? View.VISIBLE : View.GONE);
+        mDividerView.setVisibility(showTenXHeader ? View.VISIBLE : View.GONE);
     }
 
     @VisibleForTesting

@@ -163,4 +163,19 @@
     <string name="always_on_display_schedule_sunrise">Sunrise</string>        
     <string name="always_on_display_schedule_mixed_sunset">Turns on from sunset till a time</string>
     <string name="always_on_display_schedule_mixed_sunrise">Turns on from a time till sunrise</string>
+
+    <!-- TenX settings dashboard -->
+    <string name="greetings_title">Hello, TenX-OS User</string>
+    <string name="greetings_summary">Good morning, Hope you are doing Well!</string>
+    <string name="owm_api_key">fa2ae443a9558907337f1fbe9435f10b</string>
+    <string name="weather_info_unavailable">Weather info is Unavailable.</string>
+    <string name="today_weather_title">Today\'s weather is</string>
+    <string name="day_title">Day</string>
+    <string name="date_title">Date</string>
+    <string name="cpu_temperature_title">CPU</string>
+    <string name="battery_temperature_title">Battery</string>
+    <string name="morning_string">Good morning, Have a wonderful day!</string>
+    <string name="afternoon_string">Good afternoon, it\'s Delicious meal Time!</string>
+    <string name="evening_string">Good evening, It\'s Tea time!</string>
+    <string name="night_string">Good night, Sleep well!</string>
 </resources>

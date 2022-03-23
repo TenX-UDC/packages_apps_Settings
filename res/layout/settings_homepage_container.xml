@@ -35,6 +35,16 @@
             android:orientation="vertical">
 
             <include
+                android:id="@+id/tenx_settings_dashboard_container"
+                layout="@layout/tenx_settings_dashboard" />
+
+            <View
+                android:id="@+id/divider_view"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@*android:color/transparent" />
+
+            <include
                 android:id="@+id/suggestion_container_two_pane"
                 layout="@layout/suggestion_container_two_pane"
                 android:visibility="gone"/>
