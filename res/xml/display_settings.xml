@@ -214,6 +214,16 @@
             android:title="@string/device_theme"
             android:summary="@string/summary_placeholder"/>
 
+        <com.android.settings.custom.preference.SystemSettingSeekBarPreference
+            android:key="qs_transparency"
+            android:title="@string/qs_transparency_title"
+            android:summary="@string/qs_transparency_summary"
+            android:defaultValue="100"
+            settings:interval="1"
+            settings:units="%"
+            android:max="100"
+            android:min="1" />
+
         <Preference
             android:key="vr_display_pref"
             android:title="@string/display_vr_pref_title"
