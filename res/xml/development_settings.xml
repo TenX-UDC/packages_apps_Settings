@@ -749,6 +749,7 @@
 
         <SwitchPreferenceCompat
             android:key="enable_freeform_support"
+            android:defaultValue="true"
             android:title="@string/enable_freeform_support" />
 
         <SwitchPreferenceCompat
