@@ -30,15 +30,21 @@
     <!-- Android version -->
     <Preference
         android:key="os_firmware_version"
+        settings:layout="@layout/cardview_about"
+        android:icon="@drawable/ic_android_version"
         android:title="@string/firmware_version"
         android:summary="@string/summary_placeholder"
         settings:enableCopying="true"
         settings:searchable="false"
         settings:controller="com.android.settings.deviceinfo.firmwareversion.FirmwareVersionDetailPreferenceController"/>
 
+    <Preference settings:layout="@layout/divider_about" />
+
     <!-- Security patch -->
     <Preference
         android:key="security_key"
+        settings:layout="@layout/cardview_about"
+        android:icon="@drawable/ic_security_patch"
         android:title="@string/security_patch"
         settings:enableCopying="true"
         settings:controller="com.android.settings.deviceinfo.firmwareversion.SecurityPatchLevelPreferenceController"/>
@@ -47,15 +53,20 @@
     <!--
     <Preference
         android:key="module_version"
+        settings:layout="@layout/cardview_about"
         android:title="@string/module_version"
         android:summary="@string/summary_placeholder"
         settings:enableCopying="true"
         settings:controller="com.android.settings.deviceinfo.firmwareversion.MainlineModuleVersionPreferenceController"/>
     -->
 
+    <Preference settings:layout="@layout/divider_about" />
+
     <!-- TenX maintainer -->
     <Preference
         android:key="maintainer"
+        settings:layout="@layout/cardview_about"
+        android:icon="@drawable/ic_maintainer"
         android:title="@string/maintainer"
         android:summary="@string/maintainer_name"
         settings:enableCopying="true">
@@ -64,42 +75,61 @@
             android:data="@string/maintainer_telegram_username" />
     </Preference>
 
+    <Preference settings:layout="@layout/divider_about" />
+
     <!-- Baseband -->
     <Preference
         android:key="base_band"
+        settings:layout="@layout/cardview_about"
+        android:icon="@drawable/ic_baseband"
         android:title="@string/baseband_version"
         android:summary="@string/summary_placeholder"
         settings:enableCopying="true"
         settings:controller="com.android.settings.deviceinfo.firmwareversion.BasebandVersionPreferenceController"/>
 
+    <Preference settings:layout="@layout/divider_about" />
+
     <!-- Kernel -->
     <Preference
         android:key="kernel_version"
+        settings:layout="@layout/cardview_about"
+        android:icon="@drawable/ic_kernel"
         android:title="@string/kernel_version"
         android:summary="@string/summary_placeholder"
         settings:enableCopying="true"
         settings:controller="com.android.settings.deviceinfo.firmwareversion.KernelVersionPreferenceController"/>
 
+    <Preference settings:layout="@layout/divider_about" />
+
     <!-- SELinux -->
     <Preference
         android:key="selinux_status"
+        settings:layout="@layout/cardview_about"
+        android:icon="@drawable/ic_selinux"
         android:title="@string/selinux_status"
         android:summary="@string/summary_placeholder"
-        android:selectable="false"
         settings:enableCopying="false"
         settings:controller="com.android.settings.deviceinfo.firmwareversion.SelinuxStatusPreferenceController"/>
+
+    <Preference settings:layout="@layout/divider_about" />
 
     <!-- Build date -->
     <Preference
         android:key="os_build_date"
+        settings:layout="@layout/cardview_about"
+        android:icon="@drawable/ic_build_date"
         android:title="@string/build_date"
         android:summary="@string/summary_placeholder"
         settings:enableCopying="true"
         settings:controller="com.android.settings.deviceinfo.firmwareversion.TenXBuildDatePreferenceController"/>
 
+    <Preference settings:layout="@layout/divider_about" />
+
     <!-- Build -->
     <Preference
         android:key="os_build_number"
+        settings:layout="@layout/cardview_about"
+        android:icon="@drawable/ic_build_number"
         android:title="@string/build_number"
         android:summary="@string/summary_placeholder"
         settings:enableCopying="true"
