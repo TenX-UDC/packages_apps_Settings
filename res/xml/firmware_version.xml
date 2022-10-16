@@ -21,11 +21,27 @@
     android:title="@string/firmware_version"
     settings:keywords="@string/keywords_android_version">
 
+    <!-- TenX logo -->
+    <com.android.settingslib.widget.LayoutPreference
+        android:key="tenx_logo"
+        android:layout="@layout/tenx_logo"
+        android:selectable="false"/>
+
+    <Preference settings:layout="@layout/divider_about" />
+
+    <!-- TenX status -->
+    <com.android.settingslib.widget.LayoutPreference
+        android:key="status_info"
+        android:layout="@layout/tenx_status"
+        android:selectable="false" />
+
     <!-- TenX info -->
     <com.android.settingslib.widget.LayoutPreference
         android:key="tenx_info"
         android:layout="@layout/tenx_info"
         android:selectable="false" />
+
+    <Preference settings:layout="@layout/divider_about" />
 
     <!-- Android version -->
     <Preference

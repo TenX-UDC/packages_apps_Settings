@@ -20,6 +20,7 @@ import android.content.Context;
 import android.os.Build;
 import android.os.SystemProperties;
 import android.widget.TextView;
+import android.widget.ImageView;
 
 import androidx.preference.PreferenceScreen;
 
@@ -42,7 +43,7 @@ public class TenXInfoPreferenceController extends AbstractPreferenceController {
     }
 
     private String getDeviceName() {
-        String device = SystemProperties.get(PROP_TENX_DEVICE, "");
+        String device = SystemProperties.get(PROP_TENX_DEVICE_CODENAME, "");
         if (device.equals("")) {
             device = Build.MANUFACTURER;
         }
@@ -50,7 +51,7 @@ public class TenXInfoPreferenceController extends AbstractPreferenceController {
     }
 
     private String getDeviceCodename() {
-        String deviceCodename = SystemProperties.get(PROP_TENX_DEVICE_CODENAME, "");
+        String deviceCodename = SystemProperties.get(PROP_TENX_DEVICE, "");
         if (deviceCodename.equals("")) {
             deviceCodename = Build.MODEL;
         }
@@ -70,6 +71,7 @@ public class TenXInfoPreferenceController extends AbstractPreferenceController {
     public void displayPreference(PreferenceScreen screen) {
         super.displayPreference(screen);
         final LayoutPreference TenXInfoPreference = screen.findPreference(KEY_TENX_INFO);
+        final ImageView releaseIcon = (ImageView) TenXInfoPreference.findViewById(R.id.release_icon);
         final TextView version = (TextView) TenXInfoPreference.findViewById(R.id.version_message);
         final TextView buildType = (TextView) TenXInfoPreference.findViewById(R.id.build_type_message);
         final TextView device = (TextView) TenXInfoPreference.findViewById(R.id.device_message);
@@ -83,6 +85,11 @@ public class TenXInfoPreferenceController extends AbstractPreferenceController {
         device.setText(tenxDevice);
         devCodename.setText(deviceCodename);
         buildType.setText(tenxBuildType);
+        if (tenxBuildType.equalsIgnoreCase("Official")) {
+            releaseIcon.setImageResource(R.drawable.ic_release_official);
+        } else {
+            releaseIcon.setImageResource(R.drawable.ic_release_unofficial);
+        }
     }
 
     @Override
