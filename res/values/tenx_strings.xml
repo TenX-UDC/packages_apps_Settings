@@ -102,4 +102,8 @@
     <string name="app_volume_title">Per-app volume control</string>
     <string name="app_volume_summary">Show per-app volume button into volume dialog</string>
 
+    <!-- Hardware info -->
+    <string name="tenx_processor_summary">Snapdragon 636</string>
+    <string name="tenx_screen_resolution_summary">1080x2160</string>
+
 </resources>
