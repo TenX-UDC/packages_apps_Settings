@@ -28,6 +28,18 @@
         android:selectable="false"
         settings:isPreferenceVisible="false"/>
 
+    <com.android.settingslib.widget.LayoutPreference
+        android:key="about_satus"
+        android:layout="@layout/about_info_tenx"
+        android:selectable="false" />
+
+    <Preference settings:layout="@layout/divider_about" />
+
+    <com.android.settingslib.widget.LayoutPreference
+        android:key="tenx_hardware_info"
+        android:layout="@layout/about_hardware_info"
+        android:selectable="false" />
+
     <PreferenceCategory
         android:key="basic_info_category"
         android:selectable="false"

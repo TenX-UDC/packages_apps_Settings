@@ -97,4 +97,8 @@
     <string name="display_rotation_180_title">180 degrees</string>
     <string name="display_rotation_270_title">270 degrees</string>
 
+    <!-- Hardware info -->
+    <string name="tenx_processor_summary">Snapdragon 636</string>
+    <string name="tenx_screen_resolution_summary">1080x2160</string>
+
 </resources>
