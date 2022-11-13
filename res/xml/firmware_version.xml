@@ -77,7 +77,7 @@
     <Preference settings:layout="@layout/divider_about" />
 
     <!-- TenX maintainer -->
-    <Preference
+    <!--Preference
         android:key="maintainer"
         settings:layout="@layout/cardview_about"
         android:icon="@drawable/ic_maintainer"
@@ -89,7 +89,7 @@
             android:data="@string/maintainer_telegram_username" />
     </Preference>
 
-    <Preference settings:layout="@layout/divider_about" />
+    <Preference settings:layout="@layout/divider_about" /-->
 
     <!-- Baseband -->
     <Preference
