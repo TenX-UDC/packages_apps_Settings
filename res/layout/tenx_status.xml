@@ -5,11 +5,11 @@
     android:layout_height="wrap_content">
 
     <RelativeLayout
+        android:id="@+id/status_info_card"
         android:layout_height="110dp"
         android:layout_width="match_parent"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
-        android:background="@drawable/tenx_status_card"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -23,7 +23,7 @@
                 android:id="@+id/tenx_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/text_color_1"
+                android:textColor="?android:attr/textColorPrimary"
                 android:textSize="22sp"
                 android:textStyle="bold"
                 android:layout_centerHorizontal="true"
@@ -33,7 +33,7 @@
                 android:id="@+id/tenx_discription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/text_color_2"
+                android:textColor="?android:attr/textColorPrimary"
                 android:textSize="18sp"
                 android:layout_centerHorizontal="true"
                 android:layout_below="@+id/tenx_text"
@@ -43,11 +43,11 @@
                 android:id="@+id/tenx_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/text_color_2"
+                android:textColor="?android:attr/textColorSecondary"
                 android:textSize="16sp"
                 android:layout_centerHorizontal="true"
                 android:layout_below="@+id/tenx_discription"
-                android:text="Developed with love by • Advaith Bhat, • Roger T &amp; • Kshitij" />
+                android:text="Developed with love by • Advaith Bhat • Roger T &amp; • Kshitij!" />
 
         </RelativeLayout>
 
