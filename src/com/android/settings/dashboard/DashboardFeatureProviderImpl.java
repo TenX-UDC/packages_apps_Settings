@@ -436,6 +436,7 @@ public class DashboardFeatureProviderImpl implements DashboardFeatureProvider {
     private void setPreferenceIcon(Preference preference, Tile tile, boolean forceRoundedIcon,
             String iconPackage, Icon icon) {
         Drawable iconDrawable = icon.loadDrawable(preference.getContext());
+        String prefStr = preference.getKey().toString();
         if (iconDrawable == null) {
             Log.w(TAG, "Set null preference icon for: " + iconPackage);
             preference.setIcon(null);

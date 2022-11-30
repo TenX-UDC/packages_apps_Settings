@@ -22,11 +22,16 @@ import static com.android.settingslib.search.SearchIndexable.MOBILE;
 import android.app.ActivityManager;
 import android.app.settings.SettingsEnums;
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.UserHandle;
+import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -68,6 +73,9 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
     private boolean mFirstStarted = true;
     private ActivityEmbeddingController mActivityEmbeddingController;
 
+    private int mIconColor;
+    private int mIconStyle;
+
     public TopLevelSettings() {
         final Bundle args = new Bundle();
         // Disable the search icon because this page uses a full search view in actionbar.
@@ -102,6 +110,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
         super.onAttach(context);
         HighlightableMenu.fromXml(context, getPreferenceScreenResId());
         use(SupportPreferenceController.class).setActivity(getActivity());
+        updateDashboard(context);
     }
 
     @Override
@@ -212,8 +221,24 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
         iteratePreferences(preference -> {
             Drawable icon = preference.getIcon();
             if (icon != null) {
-                icon.setTint(tintColor);
+                if (mIconStyle == 0) {
+                    switch (mIconColor) {
+                        case 0:
+                            icon.setTint(tintColor);
+                            break;
+                        case 1:
+                            icon.setTint(getThemeAccentColor(getContext()));
+                            break;
+                        case 2:
+                            icon.setTint(Color.parseColor("#5a5a5a"));
+                            break;
+                        case 3:
+                            icon.setTint(randomColor());
+                            break;
+                    }
+                }
             }
+            setLayout();
         });
     }
 
@@ -373,6 +398,240 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
         }
 
         void doForEach(Preference preference);
+    }
+
+    private void setLayout() {
+        final PreferenceScreen screen = getPreferenceScreen();
+        final int count = screen.getPreferenceCount();
+        for (int i = 0; i < count; i++) {
+            final Preference preference = screen.getPreference(i);
+
+ 	    String key = preference.getKey();
+
+            if (key.equals("top_level_tenx_settings")) {
+                preference.setLayoutResource(R.layout.settings_card_top);
+                if (mIconStyle == 0) {
+                    preference.setIcon(getContext().getResources().getDrawable(R.drawable.ic_settings_tenx));
+                } else if (mIconStyle == 1) {
+                    preference.getIcon().setTint(Color.RED);
+                } else {
+                    preference.setIcon(getContext().getResources().getDrawable(R.drawable.ic_settings_tenx_gradient));
+                }
+            }
+            if (key.equals("top_level_network")) {
+                preference.setLayoutResource(R.layout.settings_card_middle);
+                if (mIconStyle == 1) {
+                    preference.setIcon(getContext().getResources().getDrawable(R.drawable.ic_wifi_colored));
+                } else if (mIconStyle == 2) {
+                    preference.setIcon(getContext().getResources().getDrawable(R.drawable.ic_wifi_gradient));
+                }
+            }
+            if (key.equals("top_level_connected_devices")) {
+                preference.setLayoutResource(R.layout.settings_card_middle);
+                if (mIconStyle == 1) {
+                    preference.setIcon(getContext().getResources().getDrawable(R.drawable.ic_devices_colored));
+                } else if (mIconStyle == 2) {
+                    preference.setIcon(getContext().getResources().getDrawable(R.drawable.ic_devices_gradient));
+                }
+            }
+            if (key.equals("top_level_apps")) {
+                preference.setLayoutResource(R.layout.settings_card_middle);
+                if (mIconStyle == 1) {
+                    preference.setIcon(getContext().getResources().getDrawable(R.drawable.ic_apps_colored));
+                } else if (mIconStyle == 2) {
+                    preference.setIcon(getContext().getResources().getDrawable(R.drawable.ic_apps_gradient));
+                }
+            }
+            if (key.equals("top_level_notifications")) {
+                preference.setLayoutResource(R.layout.settings_card_bottom);
+                if (mIconStyle == 1) {
+                    preference.setIcon(getContext().getResources().getDrawable(R.drawable.ic_notifications_colored));
+                } else if (mIconStyle == 2) {
+                    preference.setIcon(getContext().getResources().getDrawable(R.drawable.ic_notifications_gradient));
+                }
+            }
+            if (key.equals("top_level_battery")) {
+                preference.setLayoutResource(R.layout.settings_card_top);
+                if (mIconStyle == 1) {
+                    preference.setIcon(getContext().getResources().getDrawable(R.drawable.ic_battery_colored));
+                } else if (mIconStyle == 2) {
+                    preference.setIcon(getContext().getResources().getDrawable(R.drawable.ic_battery_gradient));
+                }
+            }
+            if (key.equals("top_level_storage")) {
+                preference.setLayoutResource(R.layout.settings_card_middle);
+                if (mIconStyle == 1) {
+                    preference.setIcon(getContext().getResources().getDrawable(R.drawable.ic_storage_colored));
+                } else if (mIconStyle == 2) {
+                    preference.setIcon(getContext().getResources().getDrawable(R.drawable.ic_storage_gradient));
+                }
+            }
+            if (key.equals("top_level_sound")) {
+                preference.setLayoutResource(R.layout.settings_card_middle);
+                if (mIconStyle == 1) {
+                    preference.setIcon(getContext().getResources().getDrawable(R.drawable.ic_sound_colored));
+                } else if (mIconStyle == 2) {
+                    preference.setIcon(getContext().getResources().getDrawable(R.drawable.ic_sound_gradient));
+                }
+            }
+            if (key.equals("top_level_display")) {
+                preference.setLayoutResource(R.layout.settings_card_middle);
+                if (mIconStyle == 1) {
+                    preference.setIcon(getContext().getResources().getDrawable(R.drawable.ic_display_colored));
+                } else if (mIconStyle == 2) {
+                    preference.setIcon(getContext().getResources().getDrawable(R.drawable.ic_display_gradient));
+                }
+            }
+            if (key.equals("top_level_wallpaper")) {
+                preference.setLayoutResource(R.layout.settings_card_bottom);
+                if (mIconStyle == 1) {
+                    preference.setIcon(getContext().getResources().getDrawable(R.drawable.ic_style_wallpaper_colored));
+                } else if (mIconStyle == 2) {
+                    preference.setIcon(getContext().getResources().getDrawable(R.drawable.ic_style_wallpaper_gradient));
+                }
+            }
+            if (key.equals("top_level_accessibility")) {
+                preference.setLayoutResource(R.layout.settings_card_top);
+                if (mIconStyle == 1) {
+                    preference.setIcon(getContext().getResources().getDrawable(R.drawable.ic_accessibility_colored));
+                } else if (mIconStyle == 2) {
+                    preference.setIcon(getContext().getResources().getDrawable(R.drawable.ic_accessibility_gradient));
+                }
+            }
+            // Changed here
+            if (key.equals("top_level_safety_center")) {
+                preference.setLayoutResource(R.layout.settings_card_middle);
+                if (mIconStyle == 1) {
+                    preference.setIcon(getContext().getResources().getDrawable(R.drawable.ic_safety_colored));
+                } else if (mIconStyle == 2) {
+                    preference.setIcon(getContext().getResources().getDrawable(R.drawable.ic_safety_gradient));
+                }
+            }
+            if (key.equals("top_level_security")) {
+                preference.setLayoutResource(R.layout.settings_card_middle);
+                if (mIconStyle == 1) {
+                    preference.setIcon(getContext().getResources().getDrawable(R.drawable.ic_security_colored));
+                } else if (mIconStyle == 2) {
+                    preference.setIcon(getContext().getResources().getDrawable(R.drawable.ic_security_gradient));
+                }
+            }
+            if (key.equals("top_level_privacy")) {
+                preference.setLayoutResource(R.layout.settings_card_middle);
+                if (mIconStyle == 1) {
+                    preference.setIcon(getContext().getResources().getDrawable(R.drawable.ic_privacy_colored));
+                } else if (mIconStyle == 2) {
+                    preference.setIcon(getContext().getResources().getDrawable(R.drawable.ic_privacy_gradient));
+                }
+            }
+            if (key.equals("top_level_location")) {
+                preference.setLayoutResource(R.layout.settings_card_middle);
+                if (mIconStyle == 1) {
+                    preference.setIcon(getContext().getResources().getDrawable(R.drawable.ic_location_colored));
+                } else if (mIconStyle == 2) {
+                    preference.setIcon(getContext().getResources().getDrawable(R.drawable.ic_location_gradient));
+                }
+            }
+            if (key.equals("top_level_emergency")) {
+                preference.setLayoutResource(R.layout.settings_card_bottom);
+                if (mIconStyle == 1) {
+                    preference.setIcon(getContext().getResources().getDrawable(R.drawable.ic_emergency_colored));
+                } else if (mIconStyle == 2) {
+                    preference.setIcon(getContext().getResources().getDrawable(R.drawable.ic_emergency_gradient));
+                }
+            }
+            if (key.equals("top_level_accounts")) {
+                preference.setLayoutResource(R.layout.settings_card_top);
+                if (mIconStyle == 1) {
+                    preference.setIcon(getContext().getResources().getDrawable(R.drawable.ic_accounts_colored));
+                } else if (mIconStyle == 2) {
+                    preference.setIcon(getContext().getResources().getDrawable(R.drawable.ic_accounts_gradient));
+                }
+            }
+            if (key.equals("top_level_system")) {
+                preference.setLayoutResource(R.layout.settings_card_middle);
+                if (mIconStyle == 1) {
+                    preference.setIcon(getContext().getResources().getDrawable(R.drawable.ic_system_colored));
+                } else if (mIconStyle == 2) {
+                    preference.setIcon(getContext().getResources().getDrawable(R.drawable.ic_system_gradient));
+                }
+            }
+            if (key.equals("top_level_about_device")) {
+                preference.setLayoutResource(R.layout.settings_card_bottom);
+                if (mIconStyle == 1) {
+                    preference.setIcon(getContext().getResources().getDrawable(R.drawable.ic_about_phone_colored));
+                } else if (mIconStyle == 2) {
+                    preference.setIcon(getContext().getResources().getDrawable(R.drawable.ic_about_phone_gradient));
+                }
+            }
+            if (key.equals("dashboard_tile_pref_com.google.android.apps.wellbeing.home.TopLevelSettingsActivity")) {
+                if (mIconStyle == 0) {
+                    preference.setLayoutResource(R.layout.settings_card_middle);
+                } else if (mIconStyle == 1) {
+                    preference.setLayoutResource(R.layout.settings_card_wellbeing_colored);
+                } else {
+                    preference.setLayoutResource(R.layout.settings_card_wellbeing_gradient);
+                }
+                if (mIconColor == 1 || mIconColor == 2 || mIconColor == 3) {
+                    preference.setLayoutResource(R.layout.settings_card_custom_middle);
+                }
+            }
+            if (key.equals("dashboard_tile_pref_com.google.android.apps.wellbeing.settings.TopLevelSettingsActivity")) {
+                if (mIconStyle == 0) {
+                    preference.setLayoutResource(R.layout.settings_card_middle);
+                } else if (mIconStyle == 1) {
+                    preference.setLayoutResource(R.layout.settings_card_wellbeing_colored);
+                } else {
+                    preference.setLayoutResource(R.layout.settings_card_wellbeing_gradient);
+                }
+                if (mIconColor == 1 || mIconColor == 2 || mIconColor == 3) {
+                    preference.setLayoutResource(R.layout.settings_card_custom_middle);
+                }
+            }
+            if (key.equals("top_level_wellbeing")) {
+                if (mIconStyle == 0) {
+                    preference.setLayoutResource(R.layout.settings_card_middle);
+                } else if (mIconStyle == 1) {
+                    preference.setLayoutResource(R.layout.settings_card_wellbeing_colored);
+                } else {
+                    preference.setLayoutResource(R.layout.settings_card_wellbeing_gradient);
+                }
+                if (mIconColor == 1 || mIconColor == 2 || mIconColor == 3) {
+                    preference.setLayoutResource(R.layout.settings_card_custom_middle);
+                }
+            }
+            if (key.equals("top_level_google")) {
+                if (mIconStyle == 0) {
+                    preference.setLayoutResource(R.layout.settings_card_middle);
+                } else if (mIconStyle == 1) {
+                    preference.setLayoutResource(R.layout.settings_card_google_colored);
+                } else {
+                    preference.setLayoutResource(R.layout.settings_card_google_gradient);
+                }
+                if (mIconColor == 1 || mIconColor == 2 || mIconColor == 3) {
+                    preference.setLayoutResource(R.layout.settings_card_custom_middle);
+                }
+            }
+        }
+    }
+
+    private void updateDashboard(Context context) {
+        mIconColor = Settings.System.getIntForUser(context.getContentResolver(),
+                    Settings.System.SETTINGS_DASHBOARD_ICON_COLOR, 0, UserHandle.USER_CURRENT);
+        mIconStyle = Settings.System.getIntForUser(context.getContentResolver(),
+                    Settings.System.SETTINGS_DASHBOARD_IOCON_STYLES, 0, UserHandle.USER_CURRENT);
+    }
+
+    public static int randomColor() {
+        int red = (int) (0xff * Math.random());
+        int green = (int) (0xff * Math.random());
+        int blue = (int) (0xff * Math.random());
+        return Color.argb(255, red, green, blue);
+    }
+
+    public static int getThemeAccentColor(final Context context) {
+        final TypedValue value = new TypedValue();
+        context.getTheme().resolveAttribute(android.R.attr.colorAccent, value, true);
+        return value.data;
     }
 
     public static final BaseSearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
