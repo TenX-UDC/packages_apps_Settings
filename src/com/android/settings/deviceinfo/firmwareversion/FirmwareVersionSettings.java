@@ -22,7 +22,6 @@ import android.content.Context;
 import com.android.settings.R;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.deviceinfo.firmwareversion.TenXInfoPreferenceController;
-import com.android.settings.deviceinfo.firmwareversion.TenXStatusCardPreferenceController;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.search.SearchIndexable;
@@ -52,7 +51,6 @@ public class FirmwareVersionSettings extends DashboardFragment {
     protected List<AbstractPreferenceController> createPreferenceControllers(Context context) {
         final List<AbstractPreferenceController> controllers = new ArrayList<>();
         controllers.add(new TenXInfoPreferenceController(context));
-        controllers.add(new TenXStatusCardPreferenceController(context));
         return controllers;
     }
 

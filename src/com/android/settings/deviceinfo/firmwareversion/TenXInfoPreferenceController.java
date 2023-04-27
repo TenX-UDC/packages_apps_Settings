@@ -61,10 +61,13 @@ public class TenXInfoPreferenceController extends AbstractPreferenceController {
     private String getTenXVersion() {
         final String version = SystemProperties.get(PROP_TENX_VERSION,
                 this.mContext.getString(R.string.device_info_default));
+        return version;
+    }
+
+    private String getTenXVersionCode() {
         final String versionCode = SystemProperties.get(PROP_TENX_VERSION_CODE,
                 this.mContext.getString(R.string.device_info_default));
-
-        return version + " | " + versionCode;
+        return versionCode;
     }
 
     @Override
@@ -73,15 +76,18 @@ public class TenXInfoPreferenceController extends AbstractPreferenceController {
         final LayoutPreference TenXInfoPreference = screen.findPreference(KEY_TENX_INFO);
         final ImageView releaseIcon = (ImageView) TenXInfoPreference.findViewById(R.id.release_icon);
         final TextView version = (TextView) TenXInfoPreference.findViewById(R.id.version_message);
+        final TextView romTag = (TextView) TenXInfoPreference.findViewById(R.id.rom_tag_message);
         final TextView buildType = (TextView) TenXInfoPreference.findViewById(R.id.build_type_message);
         final TextView device = (TextView) TenXInfoPreference.findViewById(R.id.device_message);
         final TextView devCodename = (TextView) TenXInfoPreference.findViewById(R.id.device_codename_message);
         final String tenxVersion = getTenXVersion();
+        final String tenxVersionTag = getTenXVersionCode();
         final String tenxDevice = getDeviceName();
         final String deviceCodename = getDeviceCodename();
         final String tenxBuildType = SystemProperties.get(PROP_TENX_BUILDTYPE,
                 this.mContext.getString(R.string.device_info_default));
         version.setText(tenxVersion);
+        romTag.setText(tenxVersionTag);
         device.setText(tenxDevice);
         devCodename.setText(deviceCodename);
         buildType.setText(tenxBuildType);
