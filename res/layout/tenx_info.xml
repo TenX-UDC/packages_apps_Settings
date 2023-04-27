@@ -22,252 +22,351 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <HorizontalScrollView
-        android:id="@+id/horizontal_scroll"
+    <RelativeLayout
+        android:id="@+id/settings_main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="none">
+        android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:id="@+id/tenx_info_layout"
+        <RelativeLayout
+            android:id="@+id/logo_header"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/about_card">
+
+            <ImageView
+                android:id="@+id/tenx_logo"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@drawable/ic_10x_phone"
+                android:layout_marginStart="15dp"
+                android:layout_centerVertical="true" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/tenx_logo"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="50dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="#TenX-OS"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="28sp"
+                    android:textColor="#e60202"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="The Custom ROM"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="20sp"
+                    android:textColor="?android:attr/textColorSecondary" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/info_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:orientation="horizontal">
+            android:layout_below="@id/logo_header"
+            android:layout_marginTop="15dp">
 
-             <LinearLayout
-                 android:id="@+id/version_card"
-                 android:layout_width="150dp"
-                 android:layout_height="120dp"
-                 android:layout_marginStart="15dp"
-                 android:background="@drawable/about_card">
+            <LinearLayout
+                android:id="@+id/top_cards"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3">
 
-                <RelativeLayout
-                    android:id="@+id/version"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_weight="1"
+                    android:weightSum="3"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/top_left">
 
-                    <ImageView
-                        android:id="@+id/version_icon"
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_centerHorizontal="true"
-                        android:src="@drawable/ic_version" />
-
-                    <TextView
-                        android:id="@+id/version_title"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center_horizontal"
-                        android:text="@string/tenx_version_title"
-                        android:textColor="?android:attr/textColorPrimary"
-                        android:textStyle="bold"
-                        android:textSize="14sp"
-                        android:layout_below="@+id/version_icon" />
+                        android:layout_gravity="center"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/version_message"
+                        <ImageView
+                            android:id="@+id/version_icon"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:src="@drawable/ic_version"
+                            android:layout_gravity="center_horizontal" />
+
+                        <TextView
+                            android:id="@+id/version_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Version"
+                            android:textSize="14sp"
+                            android:textColor="?android:attr/textColorPrimary"
+                            android:layout_gravity="center_horizontal"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/version_message"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="v1.2"
+                            android:textColor="?android:attr/textColorSecondary"
+                            android:layout_gravity="center_horizontal"
+                            android:textSize="14.5sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_weight="1"
+                    android:weightSum="3"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/middle">
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/version_title"
-                        android:gravity="center_horizontal"
-                        android:textColor="?android:attr/textColorSecondary"
-                        android:textSize="14.5sp"
-                        android:lineSpacingMultiplier="1.3" />
+                        android:layout_gravity="center"
+                        android:orientation="vertical">
 
-                </RelativeLayout>
+                        <ImageView
+                            android:id="@+id/rom_tag_icon"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:src="@drawable/ic_tag"
+                            android:layout_gravity="center_horizontal" />
 
-             </LinearLayout>
+                        <TextView
+                            android:id="@+id/rom_tag_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ROM Tag"
+                            android:textSize="14sp"
+                            android:textColor="?android:attr/textColorPrimary"
+                            android:layout_gravity="center_horizontal"
+                            android:textStyle="bold" />
 
-             <LinearLayout
-                 android:id="@+id/device_card"
-                 android:layout_width="150dp"
-                 android:layout_height="120dp"
-                 android:layout_marginStart="15dp"
-                 android:background="@drawable/about_card">
+                        <TextView
+                            android:id="@+id/rom_tag_message"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Pulse"
+                            android:textColor="?android:attr/textColorSecondary"
+                            android:layout_gravity="center_horizontal"
+                            android:textSize="14.5sp" />
 
-                <RelativeLayout
-                    android:id="@+id/device"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    </LinearLayout>
 
-                    <ImageView
-                        android:id="@+id/device_icon"
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_centerHorizontal="true"
-                        android:src="@drawable/ic_device" />
+                </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/device_title"
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_weight="1"
+                    android:weightSum="3"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/top_right">
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center_horizontal"
-                        android:text="@string/tenx_device_title"
-                        android:textColor="?android:attr/textColorPrimary"
-                        android:textStyle="bold"
-                        android:textSize="14sp"
-                        android:layout_below="@+id/device_icon" />
+                        android:layout_gravity="center"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/device_message"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/device_title"
-                        android:gravity="center_horizontal"
-                        android:textColor="?android:attr/textColorSecondary"
-                        android:textSize="14.5sp"
-                        android:lineSpacingMultiplier="1.3" />
+                        <ImageView
+                            android:id="@+id/device_icon"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:src="@drawable/ic_device"
+                            android:layout_gravity="center_horizontal" />
 
-                </RelativeLayout>
+                        <TextView
+                            android:id="@+id/device_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Device"
+                            android:textSize="14sp"
+                            android:textColor="?android:attr/textColorPrimary"
+                            android:layout_gravity="center_horizontal"
+                            android:textStyle="bold" />
 
-             </LinearLayout>
+                        <TextView
+                            android:id="@+id/device_message"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Oneplus"
+                            android:textColor="?android:attr/textColorSecondary"
+                            android:layout_gravity="center_horizontal"
+                            android:textSize="14.5sp" />
 
-             <LinearLayout
-                 android:id="@+id/codename_card"
-                 android:layout_width="150dp"
-                 android:layout_height="120dp"
-                 android:layout_marginStart="15dp"
-                 android:background="@drawable/about_card">
+                    </LinearLayout>
 
-                <RelativeLayout
-                    android:id="@+id/codename"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:id="@+id/codename_icon"
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_centerHorizontal="true"
-                        android:src="@drawable/ic_codename" />
-
-                    <TextView
-                        android:id="@+id/device_codename_title"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center_horizontal"
-                        android:text="@string/device_codename_title"
-                        android:textColor="?android:attr/textColorPrimary"
-                        android:textStyle="bold"
-                        android:textSize="14sp"
-                        android:layout_below="@+id/codename_icon" />
-
-                    <TextView
-                        android:id="@+id/device_codename_message"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/device_codename_title"
-                        android:gravity="center_horizontal"
-                        android:textColor="?android:attr/textColorSecondary"
-                        android:textSize="14.5sp"
-                        android:lineSpacingMultiplier="1.3" />
-
-                 </RelativeLayout>
-
-             </LinearLayout>
-
-             <LinearLayout
-                 android:id="@+id/buildtype_card"
-                 android:layout_width="150dp"
-                 android:layout_height="120dp"
-                 android:layout_marginStart="15dp"
-                 android:background="@drawable/about_card">
-
-                <RelativeLayout
-                    android:id="@+id/buildtype"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:id="@+id/release_icon"
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_centerHorizontal="true" />
-
-                    <TextView
-                        android:id="@+id/build_type_title"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center_horizontal"
-                        android:text="@string/tenx_build_release_type_title"
-                        android:textColor="?android:attr/textColorPrimary"
-                        android:textStyle="bold"
-                        android:textSize="14sp"
-                        android:layout_below="@+id/release_icon" />
-
-                    <TextView
-                        android:id="@+id/build_type_message"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/build_type_title"
-                        android:gravity="center_horizontal"
-                        android:textColor="?android:attr/textColorSecondary"
-                        android:textSize="14.5sp"
-                        android:lineSpacingMultiplier="1.3" />
-
-                </RelativeLayout>
+                </LinearLayout>
 
             </LinearLayout>
 
-             <LinearLayout
-                 android:id="@+id/maintainer_card"
-                 android:layout_width="150dp"
-                 android:layout_height="120dp"
-                 android:layout_marginStart="15dp"
-                 android:layout_marginEnd="15dp"
-                 android:background="@drawable/about_card">
+            <LinearLayout
+                android:id="@+id/bottom_cards"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/top_cards"
+                android:layout_marginTop="5dp"
+                android:weightSum="3">
 
-                <RelativeLayout
-                    android:id="@+id/maintainer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_weight="1"
+                    android:weightSum="3"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/bottom_left">
 
-                    <ImageView
-                        android:id="@+id/maintainer_icon"
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_centerHorizontal="true"
-                        android:src="@drawable/ic_tenx_maintainer" />
-
-                    <TextView
-                        android:id="@+id/maintainer_title"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:gravity="center_horizontal"
-                        android:text="@string/maintainer"
-                        android:textColor="?android:attr/textColorPrimary"
-                        android:textStyle="bold"
-                        android:textSize="14sp"
-                        android:layout_below="@+id/maintainer_icon" />
+                        android:layout_gravity="center"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/maintainer_message"
+                        <ImageView
+                            android:id="@+id/device_codename_icon"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:src="@drawable/ic_codename"
+                            android:layout_gravity="center_horizontal" />
+
+                        <TextView
+                            android:id="@+id/device_codename_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Codename"
+                            android:textSize="14sp"
+                            android:textColor="?android:attr/textColorPrimary"
+                            android:layout_gravity="center_horizontal"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/device_codename_message"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="9R"
+                            android:textColor="?android:attr/textColorSecondary"
+                            android:layout_gravity="center_horizontal"
+                            android:textSize="14.5sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_weight="1"
+                    android:weightSum="3"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/middle">
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/maintainer_title"
-                        android:text="@string/maintainer_name"
-                        android:gravity="center_horizontal"
-                        android:textColor="?android:attr/textColorSecondary"
-                        android:textSize="14.5sp"
-                        android:lineSpacingMultiplier="1.3" />
+                        android:layout_gravity="center"
+                        android:orientation="vertical">
 
-                </RelativeLayout>
+                        <ImageView
+                            android:id="@+id/maintainer_icon"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:src="@drawable/ic_maintainer"
+                            android:layout_gravity="center_horizontal" />
+
+                        <TextView
+                            android:id="@+id/maintainer_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Maintainer"
+                            android:textSize="14sp"
+                            android:textColor="?android:attr/textColorPrimary"
+                            android:layout_gravity="center_horizontal"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/maintainer_message"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Advaith Bhat"
+                            android:textColor="?android:attr/textColorSecondary"
+                            android:layout_gravity="center_horizontal"
+                            android:textSize="14.5sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_weight="1"
+                    android:weightSum="3"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/bottom_right">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/release_icon"
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_gravity="center_horizontal" />
+
+                        <TextView
+                            android:id="@+id/build_type_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Build"
+                            android:textSize="14sp"
+                            android:textColor="?android:attr/textColorPrimary"
+                            android:layout_gravity="center_horizontal"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/build_type_message"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Official"
+                            android:textColor="?android:attr/textColorSecondary"
+                            android:layout_gravity="center_horizontal"
+                            android:textSize="14.5sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
 
             </LinearLayout>
 
-        </LinearLayout>
+        </RelativeLayout>
 
-    </HorizontalScrollView>
+    </RelativeLayout>
 
 </RelativeLayout>
