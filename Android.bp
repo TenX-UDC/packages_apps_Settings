@@ -67,7 +67,8 @@ android_library {
         "res",
         "res-export", // for external usage
         "res-product",
-        "TenX/res"
+        "TenX/res",
+        "SettingsGoogle/res",
     ],
     static_libs: [
         // External dependencies
