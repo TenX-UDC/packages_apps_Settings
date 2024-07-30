@@ -64,10 +64,10 @@
         settings:requiresService="lineagehealth" />
 
     <!-- Battery light -->
-    <lineageos.preference.LineagePartsPreference
+    <!--<lineageos.preference.LineagePartsPreference
         android:key="battery_lights"
         settings:requiresConfig="@*lineageos.platform:integer/config_deviceLightCapabilities"
-        settings:requiresConfigMask="64" />
+        settings:requiresConfigMask="64" />-->
 
     <SwitchPreferenceCompat
         android:key="battery_percentage"
