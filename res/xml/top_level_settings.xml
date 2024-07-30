@@ -24,7 +24,7 @@
         android:key="top_level_tenx_settings"
         android:title="@string/tenx_settings_title"
         android:summary="@string/tenx_settings_summary"
-        android:icon="@drawable/ic_settings_tenx"
+        android:icon="@drawable/ic_top_level_settings_tenx"
         android:order="-200"
         android:fragment="com.tenx.settings.TenXSettings"/>
 
