@@ -33,7 +33,12 @@ public class BackgroundView extends RelativeLayout {
         final Resources resources = getResources();
         mContext = context;
         setShapes();
-        setSize();
+    }
+
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        setSizeFromSettings();
     }
 
     private void setShapes() {
@@ -149,11 +154,6 @@ public class BackgroundView extends RelativeLayout {
                 break;
         }
 
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-        params.width =200;
-        params.height =200;
-        setLayoutParams(params);
-
         if (mBackgroundShown) {
             if (mBackgroundStyle == 0 || mBackgroundStyle == 1 || mBackgroundStyle == 2 || mBackgroundStyle == 3 || mBackgroundStyle == 4 || mBackgroundStyle == 5) {
                 setBackground(gD);
@@ -165,10 +165,27 @@ public class BackgroundView extends RelativeLayout {
         }
     }
 
-    private void setSize() {
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-        params.width = 10;
-        setLayoutParams(params);
+    private void setSizeFromSettings() {
+        ContentResolver resolver = mContext.getContentResolver();
+        int defaultWidthHeight = mContext.getResources().getDimensionPixelSize(
+                R.dimen.settings_dashboard_background_width_height);
+
+        int backgroundWidthHeight = Settings.System.getInt(resolver,
+                Settings.System.SETTINGS_DASHBOARD_BACKGROUND_SIZE, defaultWidthHeight);
+
+        setSize(dpToPx(backgroundWidthHeight), dpToPx(backgroundWidthHeight));
+    }
+
+    private void setSize(int width, int height) {
+        ViewGroup.LayoutParams layoutParams = getLayoutParams();
+        if (layoutParams == null) {
+            layoutParams = new ViewGroup.LayoutParams(width, height);
+        } else {
+            layoutParams.width = width;
+            layoutParams.height = height;
+        }
+        setLayoutParams(layoutParams);
+        requestLayout();
     }
 
     private int getColorWithAlpha(int color, float ratio) {
@@ -192,5 +209,10 @@ public class BackgroundView extends RelativeLayout {
         int green = (int) (0xff * Math.random());
         int blue = (int) (0xff * Math.random());
         return Color.argb(255, red, green, blue);
+    }
+
+    public int dpToPx(int dp) {
+        float density = getResources().getDisplayMetrics().density;
+        return Math.round(dp * density);
     }
 }
