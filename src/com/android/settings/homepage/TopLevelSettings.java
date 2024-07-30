@@ -411,7 +411,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
             if (key.equals("top_level_tenx_settings")) {
                 preference.setLayoutResource(R.layout.settings_card_top);
                 if (mIconStyle == 0) {
-                    preference.setIcon(getContext().getResources().getDrawable(R.drawable.ic_settings_tenx));
+                    preference.setIcon(getContext().getResources().getDrawable(R.drawable.ic_top_level_settings_tenx));
                 } else if (mIconStyle == 1) {
                     preference.getIcon().setTint(Color.RED);
                 } else {
