@@ -429,6 +429,15 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
                 preference.setLayoutResource(R.layout.settings_card_top);
                 if (mIconStyle == 0) {
                     preference.setIcon(getContext().getResources().getDrawable(R.drawable.ic_top_level_settings_tenx));
+                    if (mIconColor == 0) {
+                        preference.getIcon().setTint(Utils.getHomepageIconColor(getContext()));
+                    } else if (mIconColor == 1) {
+                        preference.getIcon().setTint(getThemeAccentColor(getContext()));
+                    } else if (mIconColor == 2) {
+                        preference.getIcon().setTint(Color.parseColor("#5a5a5a"));
+                    } else {
+                        preference.getIcon().setTint(randomColor());
+                    }
                 } else if (mIconStyle == 1) {
                     preference.getIcon().setTint(Color.RED);
                 } else {
