@@ -40,9 +40,16 @@ public class CustomImageView extends ImageView {
 
         int mIconColor = Settings.System.getInt(resolver,
                 Settings.System.SETTINGS_DASHBOARD_ICON_COLOR, 0);
+        boolean mMonetAccurateShade = Settings.System.getInt(resolver,
+                Settings.System.MONET_ACCURATE_SHADE, 0) != 0;
+
         switch (mIconColor) {
             case 1:
-                setColorFilter(getThemeAccentColor(mContext));
+                setColorFilter(
+                    !mMonetAccurateShade
+                        ? getThemeAccentColor(mContext)
+                        : mContext.getResources().getColor(R.color.monet_accurate_shade_system)
+                );
                 break;
             case 2:
                 setColorFilter(Color.parseColor("#5a5a5a"));

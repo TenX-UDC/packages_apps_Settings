@@ -39,13 +39,19 @@ public class Arrow extends ImageView {
         ContentResolver resolver = mContext.getContentResolver();
         int mArrowColor = Settings.System.getInt(resolver,
                 Settings.System.SETTINGS_DASHBOARD_ARROW_COLOR, 0);
+        boolean mMonetAccurateShade = Settings.System.getInt(resolver,
+                Settings.System.MONET_ACCURATE_SHADE, 0) != 0;
 
         if (mArrowColor == 0) {
             setColorFilter(Color.WHITE);
         } else if (mArrowColor == 1) {
             setColorFilter(Color.BLACK);
         } else {
-            setColorFilter(getThemeAccentColor(mContext));
+            setColorFilter(
+                !mMonetAccurateShade
+                    ? getThemeAccentColor(mContext)
+                    : mContext.getResources().getColor(R.color.monet_accurate_shade_system)
+            );
         }
     }
 

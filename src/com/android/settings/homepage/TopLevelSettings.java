@@ -75,6 +75,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
 
     private int mIconColor;
     private int mIconStyle;
+    private boolean mMonetAccurateShade;
 
     public TopLevelSettings() {
         final Bundle args = new Bundle();
@@ -227,7 +228,11 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
                             icon.setTint(tintColor);
                             break;
                         case 1:
-                            icon.setTint(getThemeAccentColor(getContext()));
+                            icon.setTint(
+                                !mMonetAccurateShade
+                                    ? getThemeAccentColor(getContext())
+                                    : getContext().getResources().getColor(R.color.monet_accurate_shade_system)
+                            );
                             break;
                         case 2:
                             icon.setTint(Color.parseColor("#5a5a5a"));
@@ -415,7 +420,11 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
                     if (mIconColor == 0) {
                         preference.getIcon().setTint(Utils.getHomepageIconColor(getContext()));
                     } else if (mIconColor == 1) {
-                        preference.getIcon().setTint(getThemeAccentColor(getContext()));
+                        preference.getIcon().setTint(
+                            !mMonetAccurateShade
+                                ? getThemeAccentColor(getContext())
+                                : getContext().getResources().getColor(R.color.monet_accurate_shade_system)
+                        );
                     } else if (mIconColor == 2) {
                         preference.getIcon().setTint(Color.parseColor("#5a5a5a"));
                     } else {
@@ -628,6 +637,8 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
                     Settings.System.SETTINGS_DASHBOARD_ICON_COLOR, 0, UserHandle.USER_CURRENT);
         mIconStyle = Settings.System.getIntForUser(context.getContentResolver(),
                     Settings.System.SETTINGS_DASHBOARD_IOCON_STYLES, 0, UserHandle.USER_CURRENT);
+        mMonetAccurateShade = Settings.System.getIntForUser(context.getContentResolver(),
+                    Settings.System.MONET_ACCURATE_SHADE, 0, UserHandle.USER_CURRENT) != 0;
     }
 
     public static int randomColor() {
