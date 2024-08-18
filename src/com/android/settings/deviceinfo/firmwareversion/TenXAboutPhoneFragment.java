@@ -29,6 +29,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -62,11 +63,14 @@ public class TenXAboutPhoneFragment extends Fragment {
     private RestrictedLockUtils.EnforcedAdmin mFunDisallowedAdmin;
     private boolean mFunDisallowedBySystem;
 
+    private ImageView mBuildTypeIcon;
     private LinearLayout mAndroidVersionContainer;
 
     private TextView mTenXOSVersionSummary;
+    private TextView mTenXOSRomTagSummary;
     private TextView mTenXOSDeviceSummary;
     private TextView mTenXOSDeviceCodenameSummary;
+    private TextView mTenXOSMaintainerSummary;
     private TextView mTenXOSBuildTypeSummary;
     private TextView mAndroidVersionSummary;
     private TextView mAndroidSecurityPatchSummary;
@@ -92,11 +96,14 @@ public class TenXAboutPhoneFragment extends Fragment {
             getActivity().setTitle(R.string.firmware_version);
         }
 
+        mBuildTypeIcon = view.findViewById(R.id.tenx_build_type_icon);
         mAndroidVersionContainer = view.findViewById(R.id.android_version_container);
 
         mTenXOSVersionSummary = view.findViewById(R.id.tenx_version_summary);
+        mTenXOSRomTagSummary = view.findViewById(R.id.tenx_rom_tag_summary);
         mTenXOSDeviceSummary = view.findViewById(R.id.tenx_device_summary);
         mTenXOSDeviceCodenameSummary = view.findViewById(R.id.tenx_device_codename_summary);
+        mTenXOSMaintainerSummary = view.findViewById(R.id.tenx_maintainer_summary);
         mTenXOSBuildTypeSummary = view.findViewById(R.id.tenx_build_type_summary);
         mAndroidVersionSummary = view.findViewById(R.id.android_version_summary);
         mAndroidSecurityPatchSummary = view.findViewById(R.id.android_security_update_summary);
@@ -112,17 +119,27 @@ public class TenXAboutPhoneFragment extends Fragment {
             }
         });
 
+        String tenxBuildType = SystemProperties.get(PROP_TENX_BUILDTYPE,
+                getContext().getString(R.string.device_info_default));
+
         mTenXOSVersionSummary.setText(getTenXVersion());
+        mTenXOSRomTagSummary.setText(getRomTag());
         mTenXOSDeviceSummary.setText(getDeviceName());
         mTenXOSDeviceCodenameSummary.setText(getDeviceCodename());
-        mTenXOSBuildTypeSummary.setText(SystemProperties.get(PROP_TENX_BUILDTYPE,
-                getContext().getString(R.string.device_info_default)));
+        mTenXOSMaintainerSummary.setText(getContext().getString(R.string.maintainer_name));
+        mTenXOSBuildTypeSummary.setText(tenxBuildType);
         mAndroidVersionSummary.setText(getAndroidVersion());
         mAndroidSecurityPatchSummary.setText(DeviceInfoUtils.getSecurityPatch());
         mBasebandVersionSummary.setText(getBasebandVersion());
         mKernelVersionSummary.setText(DeviceInfoUtils.getFormattedKernelVersion(getContext()));
         mBuildDateSummary.setText(getBuildDate());
         mBuildNumberSummary.setText(getBuildNumber());
+
+        if (tenxBuildType.equalsIgnoreCase("Official")) {
+            mBuildTypeIcon.setImageResource(R.drawable.ic_build_type);
+        } else {
+            mBuildTypeIcon.setImageResource(R.drawable.ic_unofficial);
+        }
     }
 
     public CharSequence getAndroidVersion() {
@@ -169,10 +186,15 @@ public class TenXAboutPhoneFragment extends Fragment {
     private String getTenXVersion() {
         final String version = SystemProperties.get(PROP_TENX_VERSION,
                 getContext().getString(R.string.device_info_default));
+
+        return version;
+    }
+
+    private String getRomTag() {
         final String versionCode = SystemProperties.get(PROP_TENX_VERSION_CODE,
                 getContext().getString(R.string.device_info_default));
 
-        return version + " | " + versionCode;
+        return versionCode;
     }
 
     private boolean showFunActivity() {
