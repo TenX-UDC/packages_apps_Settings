@@ -16,11 +16,20 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <!-- TenX version preference -->
-    <string name="tenx_version_title">Version</string>
-    <string name="tenx_device_title">Device</string>
-    <string name="tenx_build_release_type_title">Release type</string>
-    <string name="device_codename_title">Codename</string>
     <string name="build_date">Build date</string>
+    <string name="rom_info_title">ROM info</string>
+    <string name="tenx_version_title">Version</string>
+    <string name="tenx_rom_tag_title">ROM Tag</string>
+    <string name="tenx_device_title">Device</string>
+    <string name="tenx_device_codename_title">Codename</string>
+    <string name="tenx_build_type_title">Build type</string>
+    <string name="system_info_title">System info</string>
+    <string name="android_version_title">Android version</string>
+    <string name="android_security_update_title">Android security update</string>
+    <string name="baseband_version_title">Baseband version</string>
+    <string name="kernel_version_title">Kernel version</string>
+    <string name="build_date_title">Build date</string>
+    <string name="build_number_title">Build number</string>
     
     <!-- TenX Device -->
     <string name="about_device_name">Device</string>
@@ -28,7 +37,7 @@
     <!-- Ten-X -->
     <string name="tenx_settings_title">Ten-X</string>
     <string name="tenx_settings_summary">Customization Hub</string>
-    
+
     <!-- TenX-OS maintainer -->
     <string name="maintainer">Maintainer</string>
     <string name="maintainer_name">Your local GitHub Retard</string>
