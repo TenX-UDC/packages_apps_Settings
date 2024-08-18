@@ -171,9 +171,15 @@ public class BackgroundView extends RelativeLayout {
                 R.dimen.settings_dashboard_background_width_height);
 
         int backgroundWidthHeight = Settings.System.getInt(resolver,
-                Settings.System.SETTINGS_DASHBOARD_BACKGROUND_SIZE, defaultWidthHeight);
+                Settings.System.SETTINGS_DASHBOARD_BACKGROUND_SIZE, -1);
 
-        setSize(dpToPx(backgroundWidthHeight), dpToPx(backgroundWidthHeight));
+        if (backgroundWidthHeight == -1) {
+            backgroundWidthHeight = defaultWidthHeight;
+        } else {
+            backgroundWidthHeight = dpToPx(backgroundWidthHeight);
+        }
+
+        setSize(backgroundWidthHeight, backgroundWidthHeight);
     }
 
     private void setSize(int width, int height) {
