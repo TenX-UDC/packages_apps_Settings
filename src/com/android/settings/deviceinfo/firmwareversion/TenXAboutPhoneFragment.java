@@ -51,8 +51,8 @@ public class TenXAboutPhoneFragment extends Fragment {
     private static final String PROP_TENX_VERSION = "org.tenx_version";
     private static final String PROP_TENX_VERSION_CODE = "org.tenx.fanbase_name";
     private static final String PROP_TENX_BUILDTYPE = "org.tenx.build_type";
-    private static final String PROP_TENX_DEVICE_CODENAME = "ro.product.model";
-    private static final String PROP_TENX_DEVICE = "org.tenx.device";
+    private static final String PROP_TENX_DEVICE_CODENAME = "org.tenx.device";
+    private static final String PROP_TENX_DEVICE = "ro.product.system.brand";
 
     private static final int DELAY_TIMER_MILLIS = 500;
     private static final int ACTIVITY_TRIGGER_COUNT = 3;
