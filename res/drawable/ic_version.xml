@@ -1,10 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (C) 2020-2024 TenX-OS
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="40dp"
-    android:height="40dp"
-    android:tint="?android:attr/colorAccent"
+    android:width="24dp"
+    android:height="24dp"
+    android:tint="?attr/colorAccent"
     android:viewportWidth="960"
     android:viewportHeight="960">
-    <path 
+    <path
         android:fillColor="@android:color/white"
-        android:pathData="M480,745.8L184.61,516.56L211.74,495.23L480,702.67L748.26,495.23L775.39,516.56L480,745.8ZM480,608.41L184.61,379.18L480,149.95L775.39,379.18L480,608.41ZM480,372.87L480,372.87L480,372.87L480,372.87ZM480,565.28L720.05,379.18L480,193.59L239.95,379.18L480,565.28Z"/>
+        android:pathData="M480,842L120,562L186,512L480,740L774,512L840,562L480,842ZM480,640L120,360L480,80L840,360L480,640ZM480,360L480,360L480,360L480,360ZM480,538L710,360L480,182L250,360L480,538Z" />
 </vector>
