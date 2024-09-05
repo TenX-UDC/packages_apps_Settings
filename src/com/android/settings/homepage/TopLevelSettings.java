@@ -412,6 +412,7 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
             final Preference preference = screen.getPreference(i);
 
  	    String key = preference.getKey();
+            CharSequence title = preference.getTitle();
 
             if (key.equals("top_level_tenx_settings")) {
                 preference.setLayoutResource(R.layout.settings_card_top);
@@ -628,6 +629,9 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
                 if (mIconColor == 1 || mIconColor == 2 || mIconColor == 3) {
                     preference.setLayoutResource(R.layout.settings_card_custom_middle);
                 }
+            }
+            if (title != null && "Back up or copy data".contentEquals(title)) {
+                preference.setLayoutResource(R.layout.settings_card_middle);
             }
         }
     }
