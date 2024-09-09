@@ -17,9 +17,14 @@
 package com.android.settings.tenx;
 
 import android.content.Context;
+import android.content.ComponentName;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.RenderEffect;
 import android.graphics.Shader;
+import android.graphics.drawable.Drawable;
 import android.os.UserHandle;
+import android.os.UserManager;
 import android.provider.Settings;
 import android.util.AttributeSet;
 import android.view.View;
@@ -33,10 +38,13 @@ import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelStoreOwner;
 
+import com.android.internal.util.UserIcons;
 import com.android.internal.util.tenx.Utils;
 
 import com.android.settings.R;
 import com.android.settings.tenx.battery.model.BatteryViewModel;
+
+import com.android.settingslib.drawable.CircleFramedDrawable;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -82,6 +90,7 @@ public class TenXSettingsDashboard extends RelativeLayout {
 
     public void setViews(Context context) {
         CardView backgroundCard = (CardView) findViewById(R.id.rounded_card);
+        ImageView avatarView = (ImageView) findViewById(R.id.user_profile);
         ImageView blurImage = (ImageView) findViewById(R.id.blur_image);
         TextView greetingTitle = (TextView) findViewById(R.id.greetings_title);
         TextView greetingSummary = (TextView) findViewById(R.id.greeting_summary);
@@ -161,6 +170,19 @@ public class TenXSettingsDashboard extends RelativeLayout {
         // Set date
         if (date != null) {
             date.setText(getDate());
+        }
+
+        if (avatarView != null) {
+          avatarView.setImageDrawable(getCircularUserIcon(getContext()));
+          avatarView.setVisibility(View.VISIBLE);
+          avatarView.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View v) {
+                  Intent intent = new Intent(Intent.ACTION_MAIN);
+                  intent.setComponent(new ComponentName("com.android.settings","com.android.settings.Settings$UserSettingsActivity"));
+                  getContext().startActivity(intent);
+              }
+          });
         }
     }
 
@@ -268,5 +290,21 @@ public class TenXSettingsDashboard extends RelativeLayout {
 
     public float dpToPx(int dp) {
         return dp * getResources().getDisplayMetrics().density;
+    }
+
+    private Drawable getCircularUserIcon(Context context) {
+    	final UserManager mUserManager = context.getSystemService(UserManager.class);
+        Bitmap bitmapUserIcon = mUserManager.getUserIcon(UserHandle.myUserId());
+
+        if (bitmapUserIcon == null) {
+            // get default user icon.
+            final Drawable defaultUserIcon = UserIcons.getDefaultUserIcon(
+                    context.getResources(), UserHandle.myUserId(), false);
+            bitmapUserIcon = UserIcons.convertToBitmap(defaultUserIcon);
+        }
+        Drawable drawableUserIcon = new CircleFramedDrawable(bitmapUserIcon,
+                (int) context.getResources().getDimension(R.dimen.avatar_size));
+
+        return drawableUserIcon;
     }
 }

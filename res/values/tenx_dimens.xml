@@ -6,4 +6,7 @@
     <!-- Settings TenX dashboard -->
     <dimen name="tenx_settings_dashboard_height">240dp</dimen>
 
+    <!-- Avatar size -->
+    <dimen name="avatar_size">58dp</dimen>
+
 </resources>
