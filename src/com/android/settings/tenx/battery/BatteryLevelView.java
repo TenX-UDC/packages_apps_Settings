@@ -29,6 +29,7 @@ import android.provider.Settings;
 import android.util.AttributeSet;
 import android.view.View;
 
+import androidx.core.graphics.ColorUtils;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelStoreOwner;
 
@@ -138,14 +139,17 @@ public class BatteryLevelView extends View {
         int twentyPctColor = Settings.System.getIntForUser(getContext().getContentResolver(),
                 Settings.System.SETTINGS_TENX_DASHBOARD_BATTERY_LEVEL_COLOR_TWENTY, 0xffEE4B2B,
                 UserHandle.USER_CURRENT);
+        int batteryLevelColorAlpha = Settings.System.getIntForUser(getContext().getContentResolver(),
+                Settings.System.SETTINGS_TENX_DASHBOARD_BATTERY_LEVEL_COLOR_ALPHA, 255,
+                UserHandle.USER_CURRENT);
         if (!useBatteryLevelColor) {
             return Color.parseColor("#BFFFFFFF");
         }
 
-        if (batteryLevel < 20) return twentyPctColor;
-        if (batteryLevel < 40) return fourtyPctColor;
-        if (batteryLevel < 60) return sixtyPctColor;
-        if (batteryLevel < 80) return eightyPctColor;
+        if (batteryLevel < 20) return ColorUtils.setAlphaComponent(twentyPctColor, batteryLevelColorAlpha);
+        if (batteryLevel < 40) return ColorUtils.setAlphaComponent(fourtyPctColor, batteryLevelColorAlpha);
+        if (batteryLevel < 60) return ColorUtils.setAlphaComponent(sixtyPctColor, batteryLevelColorAlpha);
+        if (batteryLevel < 80) return ColorUtils.setAlphaComponent(eightyPctColor, batteryLevelColorAlpha);
         return Color.parseColor("#BFFFFFFF");
     }
 
