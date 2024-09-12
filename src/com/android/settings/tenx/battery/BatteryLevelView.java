@@ -123,9 +123,29 @@ public class BatteryLevelView extends View {
     }
 
     private int getColorForBatteryLevel(float batteryLevel) {
-        if (batteryLevel < 20) return Color.RED;
-        if (batteryLevel < 40) return Color.YELLOW;
-        if (batteryLevel < 60) return Color.BLUE;
+        boolean useBatteryLevelColor = Settings.System.getIntForUser(getContext().getContentResolver(),
+                Settings.System.SETTINGS_TENX_DASHBOARD_BATTERY_LEVEL_COLOR, 0,
+                UserHandle.USER_CURRENT) != 0;
+        int eightyPctColor = Settings.System.getIntForUser(getContext().getContentResolver(),
+                Settings.System.SETTINGS_TENX_DASHBOARD_BATTERY_LEVEL_COLOR_EIGHTY, 0xff0FFF50,
+                UserHandle.USER_CURRENT);
+        int sixtyPctColor = Settings.System.getIntForUser(getContext().getContentResolver(),
+                Settings.System.SETTINGS_TENX_DASHBOARD_BATTERY_LEVEL_COLOR_SIXTY, 0xff0000FF,
+                UserHandle.USER_CURRENT);
+        int fourtyPctColor = Settings.System.getIntForUser(getContext().getContentResolver(),
+                Settings.System.SETTINGS_TENX_DASHBOARD_BATTERY_LEVEL_COLOR_FOURTY, 0xffFFEA00,
+                UserHandle.USER_CURRENT);
+        int twentyPctColor = Settings.System.getIntForUser(getContext().getContentResolver(),
+                Settings.System.SETTINGS_TENX_DASHBOARD_BATTERY_LEVEL_COLOR_TWENTY, 0xffEE4B2B,
+                UserHandle.USER_CURRENT);
+        if (!useBatteryLevelColor) {
+            return Color.parseColor("#BFFFFFFF");
+        }
+
+        if (batteryLevel < 20) return twentyPctColor;
+        if (batteryLevel < 40) return fourtyPctColor;
+        if (batteryLevel < 60) return sixtyPctColor;
+        if (batteryLevel < 80) return eightyPctColor;
         return Color.parseColor("#BFFFFFFF");
     }
 
