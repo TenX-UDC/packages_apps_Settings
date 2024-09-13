@@ -9,4 +9,14 @@
     <!-- Avatar size -->
     <dimen name="avatar_size">58dp</dimen>
 
+    <!-- Settings divider -->
+    <dimen name="settings_divider_height">20dp</dimen>
+    <dimen name="settings_divider_margin_top">10dp</dimen>
+    <dimen name="settings_divider_margin_bottom">10dp</dimen>
+    <dimen name="settings_divider_view_width">20dp</dimen>
+    <dimen name="settings_divider_view_height">4dp</dimen>
+
+    <!-- Settings card padding -->
+    <dimen name="settings_card_padding">20dp</dimen>
+
 </resources>

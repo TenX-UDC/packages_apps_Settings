@@ -22,4 +22,7 @@
     <!-- Monet accurate shade -->   
     <color name="monet_accurate_shade_overlay">?android:attr/colorAccent</color>
     <color name="monet_accurate_shade_system">@android:color/system_accent1_500</color>
+
+    <!-- Settings card color -->
+    <color name="settings_card_color">@color/search_bar_background</color>
 </resources>
