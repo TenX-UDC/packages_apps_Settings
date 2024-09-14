@@ -141,12 +141,9 @@ public class WeatherView extends LinearLayout {
     };
 
     private void fetchWeatherData(double latitude, double longitude) {
-        System.out.println(latitude + longitude);
-
         if (!executorService.isShutdown()) {
             executorService.execute(() -> {
                 String response = HttpRequest.getRequest("https://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&units=metric&appid=" + getContext().getString(R.string.owm_api_key));
-                System.out.println("Response is " + response);
                 if (response != null) {
                     try {
                         JSONObject jsonObject = new JSONObject(response);
@@ -155,7 +152,6 @@ public class WeatherView extends LinearLayout {
                         status = weather.getString("description");
                         temp = main.getString("temp") + "°C";
                         currentLocation = jsonObject.getString("name");
-                        System.out.println("Current location is " + currentLocation);
                     } catch (JSONException ignored) {
                     }
 
