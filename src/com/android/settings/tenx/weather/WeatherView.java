@@ -49,7 +49,7 @@ public class WeatherView extends LinearLayout {
     private TextView mWeatherTemperature;
     private TextView mWeatherStatus;
 
-    private final ExecutorService executorService;
+    private ExecutorService executorService;
     private final Handler mainHandler;
 
     public WeatherView(Context context) {
@@ -108,7 +108,7 @@ public class WeatherView extends LinearLayout {
 
     private void requestLocationUpdates() {
         boolean settingsTenXHeaderEnabled = Settings.System.getIntForUser(getContext().getContentResolver(),
-                Settings.System.SETTINGS_TENX_DASHBOARD_ENABLED, 0, UserHandle.USER_CURRENT) != 0;
+                Settings.System.SETTINGS_TENX_DASHBOARD_ENABLED, 0, UserHandle.USER_CURRENT) == 1;
         if (!settingsTenXHeaderEnabled) return;
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
     }
@@ -142,26 +142,29 @@ public class WeatherView extends LinearLayout {
 
     private void fetchWeatherData(double latitude, double longitude) {
         System.out.println(latitude + longitude);
-        executorService.execute(() -> {
-            String response = HttpRequest.getRequest("https://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&units=metric&appid=" + getContext().getString(R.string.owm_api_key));
-            System.out.println("Response is " + response);
-            if (response != null) {
-                try {
-                    JSONObject jsonObject = new JSONObject(response);
-                    JSONObject main = jsonObject.getJSONObject("main");
-                    JSONObject weather = jsonObject.getJSONArray("weather").getJSONObject(0);
-                    status = weather.getString("description");
-                    temp = main.getString("temp") + "°C";
-                    currentLocation = jsonObject.getString("name");
-                    System.out.println("Current location is " + currentLocation);
-                } catch (JSONException ignored) {
-                }
 
-                mainHandler.post(() -> {
-                    setWeatherType();
-                });
-            }
-        });
+        if (!executorService.isShutdown()) {
+            executorService.execute(() -> {
+                String response = HttpRequest.getRequest("https://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&units=metric&appid=" + getContext().getString(R.string.owm_api_key));
+                System.out.println("Response is " + response);
+                if (response != null) {
+                    try {
+                        JSONObject jsonObject = new JSONObject(response);
+                        JSONObject main = jsonObject.getJSONObject("main");
+                        JSONObject weather = jsonObject.getJSONArray("weather").getJSONObject(0);
+                        status = weather.getString("description");
+                        temp = main.getString("temp") + "°C";
+                        currentLocation = jsonObject.getString("name");
+                        System.out.println("Current location is " + currentLocation);
+                    } catch (JSONException ignored) {
+                    }
+
+                    mainHandler.post(() -> {
+                        setWeatherType();
+                    });
+                }
+            });
+        }
     }
 
     private void setWeatherType() {
@@ -206,11 +209,20 @@ public class WeatherView extends LinearLayout {
     }
 
     @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        if (executorService.isShutdown()) {
+            executorService = Executors.newSingleThreadExecutor();
+        }
+        initLocationManager();
+    }
+
+    @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
+        stopLocationUpdates();
         if (executorService != null && !executorService.isShutdown()) {
             executorService.shutdown();
         }
-        stopLocationUpdates();
     }
 }
