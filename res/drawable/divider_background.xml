@@ -17,7 +17,7 @@
 <shape android:shape="rectangle"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <solid
-        android:color="@color/monet_accurate_shade_overlay"/>
+        android:color="@*android:color/tenx_shade_start_color"/>
     <corners
         android:radius="16dp"/>
 </shape>

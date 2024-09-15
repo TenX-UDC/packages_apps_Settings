@@ -56,16 +56,21 @@ public class BackgroundView extends RelativeLayout {
                 Settings.System.SETTINGS_DASHBOARD_BACKGROUND_GRADIENT_START_COLOR, 0xff1a73e8);
         int mGradientEndColor = Settings.System.getInt(resolver,
                 Settings.System.SETTINGS_DASHBOARD_BACKGROUND_GRADIENT_END_COLOR, 0xff1a73e8);
-        boolean mMonetAccurateShade = Settings.System.getInt(resolver,
-                Settings.System.MONET_ACCURATE_SHADE, 0) != 0;
+        int mGetShadeType = Settings.System.getInt(resolver,
+                Settings.System.TENX_SHADE_TYPE, 0);
 
         int strokeWidth = mStrokeWidth;
-        int strokeColor = !mMonetAccurateShade
-                              ? getThemeAccentColor(mContext)
-                              : mContext.getResources().getColor(R.color.monet_accurate_shade_system);
-        int backgroundColor = !mMonetAccurateShade
-                                  ? getThemeAccentColor(mContext)
-                                  : mContext.getResources().getColor(R.color.monet_accurate_shade_system);
+        int strokeColor;
+        int backgroundColor;
+
+        if (mGetShadeType == 1 || mGetShadeType == 3) {
+            strokeColor = mContext.getResources().getColor(R.color.monet_accurate_shade_system);
+            backgroundColor = mContext.getResources().getColor(R.color.monet_accurate_shade_system);
+        } else {
+            strokeColor = getThemeAccentColor(mContext);
+            backgroundColor = getThemeAccentColor(mContext);
+        }
+
         int transparentColor = Color.TRANSPARENT;
         int colors[] = {mGradientStartColor, mGradientEndColor};
         GradientDrawable gD = new GradientDrawable();
