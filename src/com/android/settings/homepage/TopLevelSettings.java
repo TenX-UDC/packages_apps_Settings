@@ -630,8 +630,17 @@ public class TopLevelSettings extends DashboardFragment implements SplitLayoutLi
                     preference.setLayoutResource(R.layout.settings_card_custom_middle);
                 }
             }
-            if (title != null && "Back up or copy data".contentEquals(title)) {
-                preference.setLayoutResource(R.layout.settings_card_middle);
+            if (key.equals("dashboard_tile_pref_com.google.android.gms.backup.component.BackupOrRestoreSettingsActivity")) {
+                if (mIconStyle == 0) {
+                    preference.setLayoutResource(R.layout.settings_card_middle);
+                } else if (mIconStyle == 1) {
+                    preference.setLayoutResource(R.layout.settings_card_backup_data_colored);
+                } else {
+                    preference.setLayoutResource(R.layout.settings_card_backup_data_gradient);
+                }
+                if (mIconColor == 1 || mIconColor == 2 || mIconColor == 3) {
+                    preference.setLayoutResource(R.layout.settings_card_custom_middle);
+                }
             }
         }
     }
