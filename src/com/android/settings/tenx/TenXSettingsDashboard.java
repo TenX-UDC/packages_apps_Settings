@@ -250,7 +250,7 @@ public class TenXSettingsDashboard extends RelativeLayout {
 
     private void setGreetingTitle(TextView greetingTitleView, String greetingTitle) {
         if (greetingTitleView == null) return;
-        if (greetingTitle == null || greetingTitle == "") {
+        if (greetingTitle == null || greetingTitle.isEmpty()) {
             greetingTitleView.setText(getResources().getString(R.string.greetings_title));
         } else {
             greetingTitleView.setText("Hello, " + greetingTitle);
