@@ -80,7 +80,9 @@
     <com.android.settingslib.widget.LayoutPreference
         android:layout="@layout/settings_divider"
         android:key="divider_second"
-        android:order="-150"/>
+        android:order="-150"
+        android:selectable="false"
+        android:focusable="false"/>
 
     <com.android.settings.widget.HomepagePreference
         android:fragment="com.android.settings.fuelgauge.batteryusage.PowerUsageSummary"
@@ -133,7 +135,9 @@
     <com.android.settingslib.widget.LayoutPreference
         android:layout="@layout/settings_divider"
         android:key="divider_third"
-        android:order="-90"/>
+        android:order="-90"
+        android:selectable="false"
+        android:focusable="false"/>
 
     <com.android.settings.widget.HomepagePreference
         android:fragment="com.android.settings.accessibility.AccessibilitySettings"
@@ -197,7 +201,9 @@
     <com.android.settingslib.widget.LayoutPreference
         android:layout="@layout/settings_divider"
         android:key="divider_fourth"
-        android:order="-20"/>
+        android:order="-20"
+        android:selectable="false"
+        android:focusable="false"/>
 
     <com.android.settings.widget.HomepagePreference
         android:fragment="com.android.settings.accounts.AccountDashboardFragment"

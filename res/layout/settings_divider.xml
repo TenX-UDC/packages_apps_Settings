@@ -30,7 +30,8 @@
             android:layout_height="@dimen/settings_divider_view_height"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
-            android:background="@drawable/divider_background" />
+            android:background="@drawable/divider_background"
+            android:clickable="false" />
 
     </RelativeLayout>
 
