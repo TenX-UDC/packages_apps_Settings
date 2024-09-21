@@ -110,7 +110,7 @@ public class WeatherView extends LinearLayout {
         boolean settingsTenXHeaderEnabled = Settings.System.getIntForUser(getContext().getContentResolver(),
                 Settings.System.SETTINGS_TENX_DASHBOARD_ENABLED, 0, UserHandle.USER_CURRENT) == 1;
         if (!settingsTenXHeaderEnabled) return;
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+        locationManager.requestSingleUpdate(LocationManager.GPS_PROVIDER, locationListener, Looper.getMainLooper());
     }
 
     private void stopLocationUpdates() {
@@ -157,6 +157,7 @@ public class WeatherView extends LinearLayout {
 
                     mainHandler.post(() -> {
                         setWeatherType();
+                        stopLocationUpdates();
                     });
                 }
             });
