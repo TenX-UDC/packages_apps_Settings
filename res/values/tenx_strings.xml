@@ -186,4 +186,25 @@
     <string name="notification_battery_charge_level_seek_bar">Battery level</string>
     <string name="notification_battery_charge_level_ringtone">Ringtone</string>
     <string name="notification_battery_charge_level_silent">Silent</string>
+
+    <!-- Settings greeting contextual header -->
+    <string name="dashboard_morning1">Start your day positively!</string>
+    <string name="dashboard_morning2">A new day, new opportunities</string>
+    <string name="dashboard_morning3">Rise and shine!</string>
+    <string name="dashboard_daytime1">Make the most of your day</string>
+    <string name="dashboard_daytime2">Seize the day!</string>
+    <string name="dashboard_daytime3">How\'s your day going?</string>
+    <string name="dashboard_evening1">Enjoy your evening</string>
+    <string name="dashboard_evening2">Time to unwind</string>
+    <string name="dashboard_night1">Sweet dreams!</string>
+    <string name="dashboard_night2">Rest well</string>
+    <string name="dashboard_greeting_morning">Good morning</string>
+    <string name="dashboard_greeting_day">Hello</string>
+    <string name="dashboard_greeting_evening">Good evening</string>
+    <string name="dashboard_greeting_night">Good night</string>
+    <string name="dashboard_greeting_namaste">Namaste</string>
+    <string name="settings_search1">What are you looking for?</string>
+    <string name="settings_search2">Find settings quickly</string>
+    <string name="settings_search3">Search and discover</string>
+    <string name="default_user">User</string>
 </resources>

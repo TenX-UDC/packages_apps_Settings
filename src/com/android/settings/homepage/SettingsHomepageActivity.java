@@ -323,8 +323,9 @@ public class SettingsHomepageActivity extends FragmentActivity implements
     }
 
     private void initDashboardMessages() {
-        boolean showDashboardMessages = android.provider.Settings.System.getInt(
-                getApplicationContext().getContentResolver(), "show_contextual_dashboard_messages", 1) != 0;
+        boolean showDashboardMessages = android.provider.Settings.System.getIntForUser(getApplicationContext().getContentResolver(),
+                android.provider.Settings.System.SHOW_CONTEXTUAL_DASHBOARD_MESSAGES, 0,
+                UserHandle.USER_CURRENT) != 0;
 
         final View root = findViewById(R.id.settings_homepage_container);
         final TextView textView = root.findViewById(R.id.user_title);
@@ -362,13 +363,14 @@ public class SettingsHomepageActivity extends FragmentActivity implements
 
         if (hour >= 5 && hour < 12) {
             return getResources().getStringArray(R.array.dashboard_morning);
-        } else if (hour >= 12 && hour < 18) {
-            return getResources().getStringArray(R.array.dashboard_daytime);
-        } else if (hour >= 18 && hour < 22) {
-            return getResources().getStringArray(R.array.dashboard_evening);
-        } else {
-            return getResources().getStringArray(R.array.dashboard_night);
         }
+        if (hour >= 12 && hour < 18) {
+            return getResources().getStringArray(R.array.dashboard_daytime);
+        }
+        if (hour >= 18 && hour < 22) {
+            return getResources().getStringArray(R.array.dashboard_evening);
+        }
+        return getResources().getStringArray(R.array.dashboard_night);
     }
 
     private String getGreetingBasedOnTime() {
@@ -382,9 +384,9 @@ public class SettingsHomepageActivity extends FragmentActivity implements
 
         if (hour >= 5 && hour < 12) {
             return greetings[0]; // Good morning
-        } else if (hour >= 12 && hour < 18) {
+        } else if (hour < 18) {
             return greetings[1]; // Hello
-        } else if (hour >= 18 && hour < 22) {
+        } else if (hour < 22) {
             return greetings[2]; // Good evening
         } else {
             return greetings[3]; // Good night

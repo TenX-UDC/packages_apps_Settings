@@ -28,7 +28,7 @@
         android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:layout_weight="1"
@@ -37,19 +37,19 @@
 
             <TextView
                 android:id="@+id/user_title"
-                android:text="@string/settings_label"
-                android:layout_marginTop="100dp"
                 style="@style/HomepageTitleText"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content" />
+                android:layout_marginTop="100dp"
+                android:text="@string/settings_label" />
 
             <TextView
                 android:id="@+id/homepage_title"
-                android:text="@string/settings_label"
                 style="@style/HomepageSubTitleText"
-                android:visibility="gone"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_width="wrap_content" />
+                android:text="@string/settings_label"
+                android:visibility="gone" />
         </LinearLayout>
 
         <LinearLayout
