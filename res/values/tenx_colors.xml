@@ -24,4 +24,7 @@
 
     <!-- Settings card color -->
     <color name="settings_card_color">@color/search_bar_background</color>
+
+    <!-- Card ripple color -->
+    <color name="tenx_pref_ripple">@android:color/system_accent1_500</color>
 </resources>

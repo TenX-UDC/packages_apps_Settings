@@ -23,7 +23,9 @@
     android:layout_marginStart="15dp"
     android:layout_marginTop="2dp"
     android:layout_marginEnd="15dp"
-    android:background="@drawable/settings_card_middle">
+    android:background="@drawable/settings_card_middle"
+    android:clickable="true"
+    android:focusable="true">
 
     <com.android.settings.tenx.BackgroundView
         android:id="@+id/background_shape"
